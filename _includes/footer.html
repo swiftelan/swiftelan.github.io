@@ -1,0 +1,33 @@
+<footer class="container site-footer">
+
+  <div class="row">
+      <div class="col-md-6">
+        <ul class="list-unstyled list-inline">
+          {% if site.github_username %}
+          <li>
+            <a href="https://github.com/{{ site.github_username }}">
+              <span class="fa fa-github"></span>
+              <span class="username">{{ site.github_username }}</span>
+            </a>
+          </li>
+          {% endif %}
+
+          {% if site.twitter_username %}
+          <li>
+            <a href="https://twitter.com/{{ site.twitter_username }}">
+              <span class="fa fa-twitter"></span>
+              <span class="username">{{ site.twitter_username }}</span>
+            </a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+
+      <div class="col-md-6">
+        <p class="text">{{ site.description }}</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>

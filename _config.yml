@@ -1,0 +1,12 @@
+# Site settings
+title: swiftelan.com
+email: 
+description: > # this means to ignore newlines until "baseurl:"
+  Java Web Development
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "http://swiftelan.com" # the base hostname & protocol for your site
+twitter_username: swiftelan
+github_username: swiftelan
+
+# Build settings
+markdown: kramdown

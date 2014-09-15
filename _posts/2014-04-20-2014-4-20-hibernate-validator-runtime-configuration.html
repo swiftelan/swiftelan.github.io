@@ -1,0 +1,18 @@
+---
+layout: post
+title: Hibernate Validator Runtime Configuration
+date: 2014-04-20 22:05:53.000000000 -05:00
+categories: []
+tags: []
+status: publish
+type: post
+published: true
+meta:
+author:
+---
+<p><span style="font-size:15px">The Java Validation API allows constraints to be defined with XML and annotations. In a multi-tenant application constraints can vary depending on the tenant. To avoid creating separate deployments for each customer it would be nice to have a way to configure constraints in a more dynamic way. Hibernate Validator provides a programatic API for doing just that; view the&nbsp;</span><a href="http://docs.jboss.org/hibernate/validator/5.1/reference/en-US/html/validator-specifics.html#section-programmatic-api">documentation</a><span style="font-size:15px">.</span></p>
+<p>Using the programatic APIs means that the standard way of creating a ValidatorFactory is not feasible.</p>
+<pre class="source-code"><span class="cm-variable">ValidatorFactory</span> <span class="cm-variable">factory</span> = <span class="cm-variable">Validation</span>.<span class="cm-property">buildDefaultValidatorFactory</span>();</pre>
+<p>Implementing a ValidationProvider that invokes the programatic APIs allows the Validator to be constructed with the Validation class. This also makes sure that the constraints are always applied to a ValidatorFactory.</p>
+<pre class="source-code"><span class="cm-variable">ValidatorFactory</span> <span class="cm-variable">validatorFactory</span> = <span class="cm-variable">Validation</span>.<span class="cm-property">byProvider</span>(<span class="cm-variable">RuntimeValidationProvider</span>.<span class="cm-property">class</span>)<br />    .<span class="cm-property">configure</span>().<span class="cm-property">buildValidatorFactory</span>();</pre>
+<p>A sample implementation can be found in <a href="https://github.com/swiftelan/validation">this</a> GitHub repository.</p>
